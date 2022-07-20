@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Список блюд</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Статистика приёма пищи</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Общая масса белков</th>
+        <th>Общая масса углеводов</th>
+        <th>Общая масса жиров</th>
+        <th>Суммарное количесвто полученных килокалорий</th>
+    </tr>
+    </thead>
+    <tbody>
+        <td th:text="${statistics.proteins}" />
+        <td th:text="${statistics.carbs}" />
+        <td th:text="${statistics.lipids}" />
+        <td th:text="${statistics.kilocalories}" />
+    </tbody>
+</table>
+
+<a href="http://localhost:8080">Главная</a>
+</body>
+</html>

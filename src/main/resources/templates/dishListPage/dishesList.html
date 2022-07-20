@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Список блюд</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Список добавленных блюд</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Название</th>
+            <th>Количество белков на 100 г продукта</th>
+            <th>Количество углеводов на 100 г продукта</th>
+            <th>Количество жиров на 100 г продукта</th>
+            <th>Энергетическая ценность на 100 г продукта</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each = "dish, iterStat : ${dishesList}" >
+            <td th:text="${iterStat.count}" />
+            <td th:text="${dish.name}" />
+            <td th:text="${dish.proteins}" />
+            <td th:text="${dish.carbs}" />
+            <td th:text="${dish.lipids}" />
+            <td th:text="${dish.kiloCalories}" />
+        </tr>
+    </tbody>
+</table>
+
+<a href="http://localhost:8080">Главная</a>
+<a href="/newDish">Добавить новое блюдо</a>
+<a href="/deleteDish">Удалить блюдо</a>
+</body>
+</html>

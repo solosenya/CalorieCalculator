@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Подсчёт килокалорий!</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form action="#" th:action="@{/eaten}" th:object="${eaten}" method="post">
+  <p>Блюдо <input type="text" th:field="*{food}" /></p>
+  <p>Масса <input type="number" th:field="*{mass}" /></p>
+  <p><input type="submit" value="отправить" /> <input type="reset" value="сбросить" /></p>
+</form>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Номер</th>
+    <th>Название</th>
+    <th>Масса</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each = "eaten, iterStat : ${eatenList}" >
+    <td th:text="${iterStat.count}" />
+    <td th:text="${eaten.food}" />
+    <td th:text="${eaten.mass}" />
+  </tr>
+  </tbody>
+</table>
+<a href="http://localhost:8080">Главная</a>
+<a href="/deleteEaten">Удалить блюдо</a>
+<a href="/eaten">Добавить блюдо</a>
+<a href="/dishesList">Список известных блюд</a>
+<a href="/statistics">Посмотреть результат</a>
+</body>
+</html>

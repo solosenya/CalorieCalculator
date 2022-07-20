@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Блюдо с таким названием не найдено в списке съеденных</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p>Блюдо с таким названием не найдено в списке съеденных.</p>
+<p>Список съеденных блюд представлен ниже.</p>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Масса</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "eaten, iterStat : ${eatenList}" >
+        <td th:text="${iterStat.count}" />
+        <td th:text="${eaten.food}" />
+        <td th:text="${eaten.mass}" />
+    </tr>
+    </tbody>
+</table>
+<a href="http://localhost:8080">Главная</a>
+<a href="/deleteEaten">Удалить другое блюдо</a>
+<a href="/eaten">Добавить блюдо</a>
+</body>
+</html>

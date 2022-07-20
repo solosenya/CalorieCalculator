@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Удаляем блюдо из списка съеденных</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Масса</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "eaten, iterStat : ${eatenList}" >
+        <td th:text="${iterStat.count}" />
+        <td th:text="${eaten.food}" />
+        <td th:text="${eaten.mass}" />
+    </tr>
+    </tbody>
+</table>
+<form action="#" th:action="@{/deleteEaten}" th:object="${eatenToDelete}" method="post">
+    <p>Блюдо <input type="text" th:field="*{food}" /></p>
+    <p><input type="submit" value="отправить" /> <input type="reset" value="сбросить" /></p>
+</form>
+<a href="http://localhost:8080">Главная</a>
+<a href="/eaten">Добавить блюдо</a>
+<a href="/statistics">Посмотреть результат</a>
+</body>
+</html>
