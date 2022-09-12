@@ -1,4 +1,4 @@
-package com.example.eduproject.newdish;
+package com.example.eduproject.dish;
 
 import lombok.Data;
 

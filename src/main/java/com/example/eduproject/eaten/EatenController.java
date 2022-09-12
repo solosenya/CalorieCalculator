@@ -1,6 +1,6 @@
 package com.example.eduproject.eaten;
 
-import com.example.eduproject.newdish.Dish;
+import com.example.eduproject.dish.Dish;
 import com.example.eduproject.repository.DishRepository;
 import com.example.eduproject.repository.EatenRepository;
 import com.example.eduproject.statistics.Statistics;

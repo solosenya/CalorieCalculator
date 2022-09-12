@@ -1,4 +1,4 @@
-package com.example.eduproject.newdish;
+package com.example.eduproject.dish;
 
 import com.example.eduproject.repository.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +7,10 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.ignoreCase;
 
@@ -34,6 +38,30 @@ public class DishController {
         }
         dishRepository.save(dish);
         return "dishAdditionPages/dishAdded";
+    }
+
+    @GetMapping("/dishesList20")
+    public String getDishesList20(Model model, @RequestParam String page) {
+        long pageLong = Integer.parseInt(page);
+        model.addAttribute("dishesList", dishRepository
+                .findAll()
+                .stream()
+                .skip((pageLong * 20L) - 20L)
+                .limit(20L)
+                .collect(Collectors.toList()));
+
+        return "dishListPage/dishesList20";
+    }
+
+    @ModelAttribute("amountOfPages")
+    public List<Integer> getAmountOfPagesToShow () {
+        return IntStream
+                .rangeClosed(1, (int) Math
+                        .ceil(dishRepository
+                                .findAll()
+                                .size() / 20.0))
+                .boxed()
+                .toList();
     }
 
     @GetMapping("/dishesList")

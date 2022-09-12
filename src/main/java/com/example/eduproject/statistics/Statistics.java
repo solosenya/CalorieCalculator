@@ -1,7 +1,7 @@
 package com.example.eduproject.statistics;
 
 import com.example.eduproject.eaten.EatenFood;
-import com.example.eduproject.newdish.Dish;
+import com.example.eduproject.dish.Dish;
 import lombok.Data;
 
 import java.util.Map;
@@ -21,16 +21,16 @@ public class Statistics {
         for (EatenFood eatenFood : eatenFoodSet) {
             this.lipids += eatenDishMap.get(eatenFood)
                     .getLipids()
-                    * eatenFood.getMass();
+                    * eatenFood.getMass() / 100.0;
             this.carbs += eatenDishMap.get(eatenFood)
                     .getCarbs()
-                    * eatenFood.getMass();
+                    * eatenFood.getMass() /100.0;
             this.proteins += eatenDishMap.get(eatenFood)
                     .getProteins()
-                    * eatenFood.getMass();
+                    * eatenFood.getMass() / 100.0;
             this.kilocalories += eatenDishMap.get(eatenFood)
                     .getKiloCalories()
-                    * eatenFood.getMass();
+                    * eatenFood.getMass() / 100.0;
         }
     }
 

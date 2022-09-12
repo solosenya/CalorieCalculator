@@ -1,1 +1,1 @@
-SELECT * FROM dishesDB
+SELECT * FROM dishesdb
